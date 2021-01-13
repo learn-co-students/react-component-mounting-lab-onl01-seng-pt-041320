@@ -6,7 +6,17 @@ class Timer extends Component {
     color: "#" + Math.floor(Math.random() * 16777215).toString(16)
   };
 
-  // add your code here
+  componentDidUpdate(){
+    this.timer.current.style.color =
+    "#" + Math.floor(Math.random() * 16777215).toString(16);
+    this.timer.current.style.width = 240+this.state.time*5/1000+"px"
+    this.timer.current.style.height = 150+this.state.time*5/1000+"px"
+  }
+  
+  componentWillUnmount(){
+    clearInterval(this.interval)
+  }
+  
 
   render() {
     const { time, color } = this.state;
